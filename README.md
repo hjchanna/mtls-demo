@@ -38,12 +38,21 @@ docker build -t mtls-demo .
 
 # run docker file
 docker run -p 8443:8443 mtls-demo
-
 ```
 
-### Start docker composer
+### Testing with Choreo connect
 ```
+# building
+./build.sh
+
+# starting choreo connet
 docker-compose -f wso2-cc-mtls-test/choreo-connect/docker-compose.yaml up
+
+# deploying api
+./deploy.sh
+
+# testing
+./test.sh
 ```
 
 ### Deploy API
