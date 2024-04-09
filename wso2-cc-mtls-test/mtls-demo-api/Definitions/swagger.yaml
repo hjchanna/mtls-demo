@@ -1,0 +1,16 @@
+openapi: 3.0.1
+info:
+  title: Sample Swagger Specification
+  version: 1.0.0
+  x-wso2-apictl-init: true
+paths:
+  /*:
+    get:
+      responses:
+        '200':
+          description: ''
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+x-wso2-production-endpoints:
+  urls:
+  - https://localhost:8243

@@ -41,5 +41,12 @@ docker run -p 8443:8443 mtls-demo
 
 ```
 
+### Start docker composer
+```
+docker-compose -f wso2-cc-mtls-test/choreo-connect/docker-compose.yaml up
+```
+
+### Deploy API
+
 ### References
 This code is based on the article [here](https://medium.com/ing-tech-romania/a-simple-mtls-guide-for-spring-boot-microservices-c6bfc9878369)
