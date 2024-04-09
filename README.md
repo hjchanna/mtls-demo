@@ -31,5 +31,15 @@ mv client
 curl -k -v --cert-type P12 --cert client.p12:changeit https://localhost:8443/hello
 ```
 
+### Docker build and run
+```
+# build docker
+docker build -t mtls-demo .
+
+# run docker file
+docker run -p 8443:8443 mtls-demo
+
+```
+
 ### References
 This code is based on the article [here](https://medium.com/ing-tech-romania/a-simple-mtls-guide-for-spring-boot-microservices-c6bfc9878369)
