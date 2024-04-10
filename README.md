@@ -1,24 +1,35 @@
-# Read Me First
-The following was discovered as part of building this project:
+### Important dirs
+```
+# server keystore and truststore
+src/main/resources/server.p12
+src/main/resources/server-truststore.p12
 
-* The original package name 'me.channa.test.mtls-demo' is invalid and this project uses 'me.channa.test.mtlsdemo' instead.
+# cc configs
+wso2-cc-mtls-test/choreo-connect/conf/config.toml
 
-# Getting Started
+# cc certificates
+wso2-cc-mtls-test/resources/router/security/keystore/mg.key
+wso2-cc-mtls-test/resources/router/security/keystore/mg.pem
+wso2-cc-mtls-test/resources/router/security/truststore/mg.pem
+wso2-cc-mtls-test/resources/router/security/ca-certificates.crt
+```
 
-### Reference Documentation
-For further reference, please consider the following sections:
+### Testing with Choreo connect
+```
+# step 01: building
+./build.sh
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.3.0-M3/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.3.0-M3/maven-plugin/reference/html/#build-image)
-* [Spring Reactive Web](https://docs.spring.io/spring-boot/docs/3.3.0-M3/reference/htmlsingle/index.html#web.reactive)
+# step 02: starting choreo connet
+docker-compose -f wso2-cc-mtls-test/choreo-connect/docker-compose.yaml up
 
-### Guides
-The following guides illustrate how to use some features concretely:
+# step 03: deploying api
+./deploy.sh
 
-* [Building a Reactive RESTful Web Service](https://spring.io/guides/gs/reactive-rest-service/)
+# step 04: testing
+./test.sh
+```
 
-### Build and Testing
+### Build and Testing test backend service individually 
 ```
 # building the project
 mvn clean install
@@ -27,6 +38,7 @@ mvn clean install
 java -jar target/mtls-demo-0.0.1-SNAPSHOT.jar --server.ssl.key-store-type=PKCS12 --server.ssl.key-store=classpath:server.p12 --server.port=8443
 
 # testing
+# NOTE 'server-truststore.p12.original' trusts the client.p12. Currently server-truststore.p12 has wso2 certificates.
 mv client
 curl -k -v --cert-type P12 --cert client.p12:changeit https://localhost:8443/hello
 ```
@@ -39,23 +51,3 @@ docker build -t mtls-demo .
 # run docker file
 docker run -p 8443:8443 mtls-demo
 ```
-
-### Testing with Choreo connect
-```
-# building
-./build.sh
-
-# starting choreo connet
-docker-compose -f wso2-cc-mtls-test/choreo-connect/docker-compose.yaml up
-
-# deploying api
-./deploy.sh
-
-# testing
-./test.sh
-```
-
-### Deploy API
-
-### References
-This code is based on the article [here](https://medium.com/ing-tech-romania/a-simple-mtls-guide-for-spring-boot-microservices-c6bfc9878369)

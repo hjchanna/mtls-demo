@@ -15,4 +15,4 @@ paths:
 x-wso2-production-endpoints:
   urls:
   # - https://swapi.dev/api/
-  - https://mtls-demo:8243
+  - https://mtls-demo:8443
