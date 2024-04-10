@@ -2,15 +2,17 @@ openapi: 3.0.1
 info:
   title: Sample Swagger Specification
   version: 1.0.0
-  x-wso2-apictl-init: true
+  description: "A sample Swagger specification for testing"
 paths:
-  /*:
+  /hello:
     get:
       responses:
         '200':
           description: ''
+      summary: ''
       x-auth-type: None
       x-throttling-tier: Unlimited
 x-wso2-production-endpoints:
   urls:
-  - https://localhost:8243
+  # - https://swapi.dev/api/
+  - https://mtls-demo:8243

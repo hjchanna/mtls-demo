@@ -18,8 +18,8 @@ data:
   endpointConfig:
     endpoint_type: http
     production_endpoints:
-      url: http://localhost:8080
+      url: https://mtls-demo:8243
     sandbox_endpoints:
-      url: http://localhost:8081
+      url: https://mtls-demo:8243
   endpointImplementationType: ENDPOINT
   websubSubscriptionConfiguration: null
